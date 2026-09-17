@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SevaLink Maharashtra - Unified Citizen Services Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ROLE SELECTOR BAR -->
+<div class="role-bar" id="roleBar">
+  <span>🇮🇳 SevaLink Maharashtra — Demo Mode</span>
+  <span style="color:rgba(255,255,255,0.5)">View as:</span>
+  <button class="role-btn active" onclick="setRole('citizen')">👤 Citizen</button>
+  <button class="role-btn" onclick="setRole('officer')">🏛 Officer</button>
+  <button class="role-btn" onclick="setRole('admin')">⚙️ Admin</button>
+  <span style="margin-left:8px; color:rgba(255,255,255,0.4); font-size:10px">🔒 Sandbox/Demo Data Only</span>
+</div>
+
+<div id="app" style="margin-top:36px;">
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-logo">
+      <div class="brand-icon">S</div>
+      <div class="brand-text">
+        <div class="brand-name">SevaLink Maharashtra</div>
+        <div class="brand-sub">महाराष्ट्र सेवा संपर्क</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-user">
+    <div class="user-avatar">RA</div>
+    <div class="user-info">
+      <div class="user-name">Rahul Ashok Patil</div>
+      <div class="user-role" id="userRoleLabel">Citizen · Verified</div>
+    </div>
+  </div>
+
+  <div id="sidebarNav"></div>
+</nav>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <button class="icon-btn" onclick="toggleSidebar()" style="display:none" id="menuBtn">☰</button>
+  <div>
+    <div class="topbar-title" id="topbarTitle">Dashboard</div>
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" onclick="navigate('notifications')">
+      🔔<span class="badge">3</span>
+    </button>
+    <button class="icon-btn" onclick="navigate('security')">🔒</button>
+    <button class="icon-btn" onclick="navigate('profile')" style="font-size:22px">👤</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content" id="mainContent">
+
+  <!-- ================================================ CITIZEN DASHBOARD -->
+  <div class="page active" id="page-dashboard">
+    <div class="demo-banner">⚠️ Demo Mode — All data is mock/sandbox. No real government APIs are connected. For SIH 2026 prototype demonstration only.</div>
+
+    <div class="page-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div>
+          <div class="page-title">Good morning, Rahul 🙏</div>
+          <div class="page-sub">Here's your Seva overview for today — Saturday, 5 Sep 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-icon orange">📋</div>
+        <div>
+          <div class="stat-label">Active Applications</div>
+          <div class="stat-value">3</div>
+          <div class="stat-change up">↑ 1 new this week</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon navy">📄</div>
+        <div>
+          <div class="stat-label">Verified Documents</div>
+          <div class="stat-value">7</div>
+          <div class="stat-change">of 9 uploaded</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">✅</div>
+        <div>
+          <div class="stat-label">Eligible Schemes</div>
+          <div class="stat-value">12</div>
+          <div class="stat-change up">↑ 3 newly eligible</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue">🔐</div>
+        <div>
+          <div class="stat-label">Active Consents</div>
+          <div class="stat-value">4</div>
+          <div class="stat-change">2 pending review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-grid col-2" style="margin-bottom:20px">
+      <!-- Applications -->
+      <div class="card">
+        <div class="card-header">
+          <div><div class="card-title">Active Applications</div><div class="card-sub">Track your submitted applications</div></div>
+          <button class="btn btn-outline btn-sm" onclick="navigate('tracking')">View all</button>
+        </div>
+        <div>
+          <div style="display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)">
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:500">Swayam Siddha Scheme — Agriculture Dept.</div>
+              <div style="font-size:11px;color:var(--gray-500);margin-top:2px">App ID: APP-2026-08-7842 · Submitted 22 Aug 2026</div>
+            </div>
+            <span class="badge badge-warning">Under Review</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)">
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:500">Maharashtra Student Scholarship</div>
+              <div style="font-size:11px;color:var(--gray-500);margin-top:2px">App ID: APP-2026-08-5513 · Submitted 18 Aug 2026</div>
+            </div>
+            <span class="badge badge-success">Approved ✓</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;padding:10px 0">
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:500">Gharkul Housing Scheme</div>
+              <div style="font-size:11px;color:var(--gray-500);margin-top:2px">App ID: APP-2026-09-0011 · Submitted 3 Sep 2026</div>
+            </div>
+            <span class="badge badge-info">Doc Pending</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="card">
+        <div class="card-header">
+          <div><div class="card-title">Recent Notifications</div></div>
+          <button class="btn btn-outline btn-sm" onclick="navigate('notifications')">View all</button>
+        </div>
+        <div class="notif-item">
+          <div class="notif-dot"></div>
+          <div class="notif-icon">✅</div>
+          <div class="notif-text">
+            <div class="notif-title">Scholarship approved</div>
+            <div class="notif-body">Your Maharashtra Student Scholarship has been approved. ₹12,000 will be credited in 3–5 working days.</div>
+            <div class="notif-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="notif-item">
+          <div style="width:6px"></div>
+          <div class="notif-icon">📄</div>
+          <div class="notif-text">
+            <div class="notif-title">Document expiry alert</div>
+            <div class="notif-body">Your domicile certificate expires in 42 days. Renew before it affects applications.</div>
+            <div class="notif-time">Yesterday</div>
+          </div>
+        </div>
+        <div class="notif-item">
+          <div style="width:6px"></div>
+          <div class="notif-icon">🔒</div>
+          <div class="notif-text">
+            <div class="notif-title">New login detected</div>
+            <div class="notif-body">Login from Pune, Maharashtra on Chrome / Windows.</div>
+            <div class="notif-time">2 days ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-grid col-2">
+      <!-- Recommended Schemes -->
+      <div class="card">
+        <div class="card-header">
+          <div><div class="card-title">Recommended for You</div><div class="card-sub">Based on your profile — demo recommendations</div></div>
+          <button class="btn btn-outline btn-sm" onclick="navigate('eligibility')">See all</button>
+        </div>
+        <div class="scheme-card" style="border:none;padding:10px 0;margin:0;border-bottom:1px solid var(--gray-100)">
+          <div class="scheme-match"><div class="match-circle">92%</div></div>
+          <div>
+            <div class="scheme-name">PM Kisan Samman Nidhi</div>
+            <div class="scheme-dept">Agriculture Dept.</div>
+            <div class="scheme-reason">Matched on: land ownership, income ≤ ₹1.5L, Maharashtra farmer status</div>
+          </div>
+        </div>
+        <div class="scheme-card" style="border:none;padding:10px 0;margin:0">
+          <div class="scheme-match"><div class="match-circle medium">78%</div></div>
+          <div>
+            <div class="scheme-name">Rajiv Gandhi Scholarship (SC)</div>
+            <div class="scheme-dept">Social Justice Dept.</div>
+            <div class="scheme-reason">Matched on: caste certificate, income criteria, academic score</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Completion -->
+      <div class="card">
+        <div class="card-header">
+          <div><div class="card-title">Profile & Security</div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:13px;font-weight:500">Profile Completion</span>
+            <span style="font-size:14px;font-weight:700;color:var(--navy)">78%</span>
+          </div>
+          <div class="progress-bar" style="margin-bottom:16px">
+            <div class="progress-fill" style="width:78%"></div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:13px;font-weight:500">Identity Verified</span>
+            <span class="verify-badge verify-verified">✓ Aadhaar Linked</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;margin-top:10px">
+            <span style="font-size:13px;font-weight:500">Two-Factor Auth</span>
+            <span class="verify-badge verify-verified">✓ Active</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+            <span style="font-size:13px;font-weight:500">Bank Account Linked</span>
+            <span class="verify-badge verify-pending">⏳ Pending</span>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:8px">
+            <button class="btn btn-primary btn-sm" onclick="navigate('profile')">Complete Profile</button>
+            <button class="btn btn-outline btn-sm" onclick="navigate('security')">Security</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ CITIZEN PROFILE -->
+  <div class="page" id="page-profile">
+    <div class="page-header">
+      <div class="page-title">My Profile</div>
+      <div class="page-sub">Manage your personal information and verification status</div>
+    </div>
+
+    <div class="alert alert-info">ℹ️ Sensitive fields (mobile, email, bank details) require OTP verification before modification. Demo mode — no real data is stored.</div>
+
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:20px">
+      <!-- Left Panel -->
+      <div>
+        <div class="card" style="text-align:center;margin-bottom:16px">
+          <div class="profile-header" style="justify-content:center;flex-direction:column;margin-bottom:16px">
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar">RP</div>
+              <div class="avatar-edit">✏️</div>
+            </div>
+          </div>
+          <div style="font-size:16px;font-weight:700;color:var(--navy)">Rahul Ashok Patil</div>
+          <div style="font-size:12px;color:var(--gray-500);margin-top:2px">Citizen ID: MH-CIT-2024-003847</div>
+          <div style="margin-top:10px"><span class="verify-badge verify-verified">✓ Identity Verified</span></div>
+
+          <div style="margin-top:16px;border-top:1px solid var(--gray-100);padding-top:14px;text-align:left">
+            <div style="font-size:11px;font-weight:600;color:var(--gray-500);margin-bottom:8px">PROFILE COMPLETION</div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+              <span style="font-size:12px;color:var(--gray-700)">Overall</span>
+              <span style="font-size:12px;font-weight:600">78%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+            <div style="margin-top:10px;font-size:11px;color:var(--gray-500)">Missing: Bank details, Emergency contact</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="font-size:12px;font-weight:600;color:var(--gray-500);margin-bottom:10px">VERIFICATION STATUS</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+            <div style="display:flex;justify-content:space-between"><span>Aadhaar</span><span class="verify-badge verify-verified">Verified</span></div>
+            <div style="display:flex;justify-content:space-between"><span>PAN Card</span><span class="verify-badge verify-verified">Verified</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Mobile</span><span class="verify-badge verify-verified">Verified</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Email</span><span class="verify-badge verify-pending">Pending</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Bank A/C</span><span class="verify-badge verify-required">Not Added</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Caste Cert.</span><span class="verify-badge verify-verified">Verified</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'prof-personal')">Personal Info</div>
+          <div class="tab" onclick="switchTab(this,'prof-contact')">Contact & Address</div>
+          <div class="tab" onclick="switchTab(this,'prof-education')">Education & Income</div>
+          <div class="tab" onclick="switchTab(this,'prof-bank')">Bank Details</div>
+          <div class="tab" onclick="switchTab(this,'prof-emergency')">Emergency Contact</div>
+        </div>
+
+        <div id="prof-personal" class="tab-panel">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Personal Information</div>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+            </div>
+            <div class="section-grid col-2">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input class="form-control" value="Rahul Ashok Patil" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Aadhaar Number <span class="verify-badge verify-verified" style="font-size:9px">Verified</span></label>
+                <input class="form-control" value="XXXX XXXX 7842" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Date of Birth</label>
+                <input class="form-control" value="14 March 1998" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Gender</label>
+                <input class="form-control" value="Male" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Category / Caste</label>
+                <input class="form-control" value="OBC" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Religion</label>
+                <input class="form-control" value="Hindu" readonly>
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:4px">Last updated: 15 July 2026 · To modify Aadhaar-linked fields, visit your nearest Common Service Centre.</div>
+          </div>
+        </div>
+
+        <div id="prof-contact" class="tab-panel" style="display:none">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Contact & Address</div>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+            </div>
+            <div class="section-grid col-2">
+              <div class="form-group">
+                <label class="form-label">Mobile Number 🔒</label>
+                <div style="display:flex;gap:6px">
+                  <input class="form-control" value="+91 98765 43210" readonly style="flex:1">
+                  <button class="btn btn-outline btn-sm" onclick="openOTP('mobile')">Change</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address 🔒</label>
+                <div style="display:flex;gap:6px">
+                  <input class="form-control" value="rahul.patil@email.com" readonly style="flex:1">
+                  <button class="btn btn-outline btn-sm" onclick="openOTP('email')">Change</button>
+                </div>
+              </div>
+              <div class="form-group" style="grid-column:1/-1">
+                <label class="form-label">Permanent Address</label>
+                <textarea class="form-control" rows="2" readonly>Flat 4B, Shivneri Society, Paud Road, Kothrud</textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">District</label>
+                <input class="form-control" value="Pune" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Taluka</label>
+                <input class="form-control" value="Haveli" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Village / City</label>
+                <input class="form-control" value="Pune City" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">PIN Code</label>
+                <input class="form-control" value="411038" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="prof-education" class="tab-panel" style="display:none">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Education & Income</div>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+            </div>
+            <div class="section-grid col-2">
+              <div class="form-group">
+                <label class="form-label">Highest Education</label>
+                <input class="form-control" value="Bachelor of Engineering (B.E.)" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Passing Year</label>
+                <input class="form-control" value="2020" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Occupation</label>
+                <input class="form-control" value="Farmer / Self-employed" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Annual Income</label>
+                <input class="form-control" value="₹1,20,000 (approx.)" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Land Ownership (acres)</label>
+                <input class="form-control" value="2.5 acres" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Income Certificate No.</label>
+                <input class="form-control" value="INC-MH-2025-119843" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="prof-bank" class="tab-panel" style="display:none">
+          <div class="card">
+            <div class="alert alert-warning" style="margin-bottom:14px">⚠️ Bank details require OTP verification before any modification. Never share your account number with anyone claiming to be from government.</div>
+            <div class="card-header">
+              <div class="card-title">Bank Information</div>
+              <button class="btn btn-outline btn-sm" onclick="openOTP('bank')">🔒 Add / Update</button>
+            </div>
+            <div style="text-align:center;padding:30px;color:var(--gray-400)">
+              <div style="font-size:36px;margin-bottom:10px">🏦</div>
+              <div style="font-size:14px;font-weight:500;color:var(--gray-600)">No bank account linked</div>
+              <div style="font-size:12px;margin-top:4px">Link your bank account to receive direct benefit transfers</div>
+              <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="openOTP('bank')">Link Bank Account</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="prof-emergency" class="tab-panel" style="display:none">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Emergency Contact</div>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+            </div>
+            <div style="text-align:center;padding:30px;color:var(--gray-400)">
+              <div style="font-size:36px;margin-bottom:10px">👥</div>
+              <div style="font-size:14px;font-weight:500;color:var(--gray-600)">No emergency contact added</div>
+              <button class="btn btn-primary btn-sm" style="margin-top:14px">Add Emergency Contact</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ GOVERNMENT SERVICES HUB -->
+  <div class="page" id="page-services">
+    <div class="page-header">
+      <div class="page-title">Government Services Hub</div>
+      <div class="page-sub">Access all Maharashtra government services in one place</div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="search-bar" style="margin-bottom:12px">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="form-control" placeholder="Search services, schemes, departments..." style="padding-left:36px;font-size:14px;height:42px" oninput="filterServices(this.value)">
+      </div>
+      <div class="filter-row">
+        <span style="font-size:12px;color:var(--gray-600);font-weight:500">Category:</span>
+        <button class="chip active" onclick="filterCat(this,'all')" style="border-color:var(--navy);color:var(--navy)">All</button>
+        <button class="chip" onclick="filterCat(this,'education')">📚 Education</button>
+        <button class="chip" onclick="filterCat(this,'agriculture')">🌾 Agriculture</button>
+        <button class="chip" onclick="filterCat(this,'health')">🏥 Healthcare</button>
+        <button class="chip" onclick="filterCat(this,'housing')">🏠 Housing</button>
+        <button class="chip" onclick="filterCat(this,'welfare')">🤝 Social Welfare</button>
+        <button class="chip" onclick="filterCat(this,'certificates')">📜 Certificates</button>
+        <button class="chip" onclick="filterCat(this,'employment')">💼 Employment</button>
+      </div>
+    </div>
+
+    <div class="service-grid" id="serviceGrid">
+      <!-- Services injected by JS -->
+    </div>
+  </div>
+
+  <!-- ================================================ DOCUMENT VAULT -->
+  <div class="page" id="page-documents">
+    <div class="page-header">
+      <div class="page-title">Document Vault</div>
+      <div class="page-sub">Securely store and manage your government documents</div>
+    </div>
+
+    <div class="alert alert-info">🔒 Documents are stored locally in this demo. In production, documents are encrypted and stored in the Maharashtra Digital Document Repository (MDDR). No real documents are uploaded here.</div>
+
+    <div class="card" style="margin-bottom:16px;padding:12px 16px">
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <div style="font-size:13px;color:var(--gray-600)">Storage used: <strong style="color:var(--navy)">34 MB of 500 MB</strong></div>
+        <div class="progress-bar" style="flex:1;min-width:150px"><div class="progress-fill" style="width:7%"></div></div>
+        <button class="btn btn-primary btn-sm">+ Upload Document</button>
+      </div>
+    </div>
+
+    <div class="doc-grid" id="docGrid"><!-- injected --></div>
+  </div>
+
+  <!-- ================================================ APPLICATION TRACKING -->
+  <div class="page" id="page-tracking">
+    <div class="page-header">
+      <div class="page-title">Application Tracking</div>
+      <div class="page-sub">Monitor the status of all your submitted applications</div>
+    </div>
+
+    <div class="filter-row">
+      <select class="form-control" style="width:auto;font-size:12px">
+        <option>All Status</option>
+        <option>Approved</option>
+        <option>Under Review</option>
+        <option>Document Pending</option>
+        <option>Rejected</option>
+      </select>
+      <select class="form-control" style="width:auto;font-size:12px">
+        <option>All Departments</option>
+        <option>Agriculture</option>
+        <option>Education</option>
+        <option>Housing</option>
+      </select>
+      <div class="search-bar" style="flex:1">
+        <span class="search-icon">🔍</span>
+        <input class="form-control" placeholder="Search by App ID or scheme name..." style="padding-left:36px">
+      </div>
+    </div>
+
+    <div id="trackingList"><!-- injected --></div>
+  </div>
+
+  <!-- ================================================ AI ASSISTANT -->
+  <div class="page" id="page-assistant">
+    <div class="page-header">
+      <div class="page-title">Seva AI Assistant</div>
+      <div class="page-sub">Your intelligent guide to Maharashtra government services</div>
+      <div style="margin-top:8px"><span class="badge badge-orange">Demo AI — Mock Responses</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:20px">
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid var(--border);background:var(--navy);color:white;display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">🤖</div>
+          <div>
+            <div style="font-size:14px;font-weight:600">Seva AI</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.7)">Online · Responds instantly</div>
+          </div>
+        </div>
+        <div class="chat-container">
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg bot">
+              <div class="chat-bubble">🙏 Namaste! I'm Seva AI, your government services assistant for Maharashtra. I can help you:<br><br>• Find schemes you're eligible for<br>• Guide document requirements<br>• Track application status<br>• Explain government processes<br><br>How can I help you today?</div>
+              <div class="chat-meta">Seva AI · Just now</div>
+            </div>
+          </div>
+          <div style="padding:10px 12px;border-top:1px solid var(--border)">
+            <div class="chip-row">
+              <span class="chip" onclick="sendChat('Which schemes am I eligible for?')">Which schemes am I eligible for?</span>
+              <span class="chip" onclick="sendChat('What documents do I need for housing scheme?')">Documents for housing scheme</span>
+              <span class="chip" onclick="sendChat('Check my application status')">Check application status</span>
+              <span class="chip" onclick="sendChat('How do I apply for Ration Card?')">Apply for Ration Card</span>
+            </div>
+          </div>
+          <div class="chat-input-row">
+            <input type="text" id="chatInput" class="form-control chat-input" placeholder="Type your question..." onkeydown="if(event.key==='Enter')sendChatInput()">
+            <button class="btn btn-primary" onclick="sendChatInput()">Send ↗</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card">
+          <div class="card-title" style="margin-bottom:10px">📊 My Summary</div>
+          <div style="font-size:12px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Eligible schemes</span><strong>12</strong></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Active applications</span><strong>3</strong></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Verified documents</span><strong>7</strong></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Profile strength</span><strong style="color:var(--success)">78%</strong></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="margin-bottom:10px">💡 Popular Questions</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div class="chip" style="border-radius:var(--radius);cursor:pointer" onclick="sendChat('What is PM Kisan scheme?')">What is PM Kisan scheme?</div>
+            <div class="chip" style="border-radius:var(--radius);cursor:pointer" onclick="sendChat('How long does domicile certificate take?')">Domicile certificate timeline?</div>
+            <div class="chip" style="border-radius:var(--radius);cursor:pointer" onclick="sendChat('What is MahaDBT?')">What is MahaDBT?</div>
+            <div class="chip" style="border-radius:var(--radius);cursor:pointer" onclick="sendChat('How to link Aadhaar to ration card?')">Link Aadhaar to ration card</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ SMART ELIGIBILITY -->
+  <div class="page" id="page-eligibility">
+    <div class="page-header">
+      <div class="page-title">Smart Eligibility Engine</div>
+      <div class="page-sub">Schemes matched to your profile — prototype/demo recommendations using mock rules</div>
+    </div>
+
+    <div class="demo-banner">📊 Results are generated by mock eligibility rules based on your demo profile data. Not actual government determinations.</div>
+
+    <div class="filter-row">
+      <select class="form-control" style="width:auto;font-size:12px">
+        <option>All Schemes</option>
+        <option>Agriculture</option>
+        <option>Education</option>
+        <option>Housing</option>
+        <option>Social Welfare</option>
+      </select>
+      <select class="form-control" style="width:auto;font-size:12px">
+        <option>Sort: Match Score</option>
+        <option>Sort: A-Z</option>
+        <option>Sort: Benefit Amount</option>
+      </select>
+      <span style="font-size:12px;color:var(--gray-500)">Showing 8 matched schemes</span>
+    </div>
+
+    <div id="eligibilityList"><!-- injected --></div>
+  </div>
+
+  <!-- ================================================ CONSENT MANAGEMENT -->
+  <div class="page" id="page-consent">
+    <div class="page-header">
+      <div class="page-title">Consent Management</div>
+      <div class="page-sub">Control which departments can access your data and for what purpose</div>
+    </div>
+
+    <div class="alert alert-info">🔒 You control your data. Revoking consent will prevent the department from accessing your linked information. Applications pending document verification may be affected.</div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(this,'consent-active')">Active Consents</div>
+      <div class="tab" onclick="switchTab(this,'consent-pending')">Pending Approval</div>
+      <div class="tab" onclick="switchTab(this,'consent-history')">Consent History</div>
+    </div>
+
+    <div id="consent-active">
+      <div id="consentList"><!-- injected --></div>
+    </div>
+    <div id="consent-pending" style="display:none">
+      <div class="consent-card">
+        <div class="consent-icon">🏠</div>
+        <div class="consent-info">
+          <div class="consent-name">Housing Dept. — Gharkul Scheme</div>
+          <div class="consent-desc">Requesting: Income certificate, caste certificate, land records · Purpose: Benefit eligibility verification · Valid: 6 months</div>
+        </div>
+        <div class="consent-actions">
+          <button class="btn btn-success btn-sm" onclick="showToast('Consent granted')">Grant</button>
+          <button class="btn btn-danger btn-sm" onclick="showToast('Consent denied')">Deny</button>
+        </div>
+      </div>
+    </div>
+    <div id="consent-history" style="display:none">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Department</th><th>Purpose</th><th>Date</th><th>Action</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Social Justice Dept.</td><td>Scholarship eligibility</td><td>12 Jun 2026</td><td>Granted</td><td><span class="badge badge-success">Expired</span></td></tr>
+          <tr><td>Agriculture Dept.</td><td>Crop insurance verification</td><td>3 Mar 2026</td><td>Granted</td><td><span class="badge badge-success">Expired</span></td></tr>
+          <tr><td>Revenue Dept.</td><td>Land record linkage</td><td>14 Jan 2026</td><td>Revoked</td><td><span class="badge badge-danger">Revoked</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ================================================ SECURITY CENTER -->
+  <div class="page" id="page-security">
+    <div class="page-header">
+      <div class="page-title">Security Center</div>
+      <div class="page-sub">Manage your account security, sessions and access controls</div>
+    </div>
+
+    <div class="alert alert-success">✅ Your account security is strong. 2FA is active. No suspicious activity detected in the last 30 days.</div>
+
+    <div class="section-grid col-2">
+      <div>
+        <!-- 2FA -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header">
+            <div><div class="card-title">Two-Factor Authentication</div><div class="card-sub">Currently: Mobile OTP (TOTP)</div></div>
+            <span class="badge badge-success">Active</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid var(--border);border-radius:var(--radius)">
+              <div><div style="font-size:13px;font-weight:500">📱 SMS OTP</div><div style="font-size:11px;color:var(--gray-500)">+91 98765 43210</div></div>
+              <span class="badge badge-success">Primary</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid var(--border);border-radius:var(--radius)">
+              <div><div style="font-size:13px;font-weight:500">🔐 Authenticator App</div><div style="font-size:11px;color:var(--gray-500)">Not configured</div></div>
+              <button class="btn btn-outline btn-xs" onclick="openOTP('totp')">Set up</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header">
+            <div class="card-title">Password & Access</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-size:13px">Password</div>
+              <button class="btn btn-outline btn-sm" onclick="openOTP('password')">Change Password</button>
+            </div>
+            <div style="font-size:11px;color:var(--gray-500)">Last changed: 10 April 2026 (148 days ago)</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+              <div style="font-size:13px">Logout from all devices</div>
+              <button class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? All active sessions will be terminated.')) showToast('All sessions terminated')">Logout All</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy Controls -->
+        <div class="card">
+          <div class="card-title" style="margin-bottom:12px">Privacy Controls</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-size:13px;font-weight:500">Share anonymized data for service improvement</div><div style="font-size:11px;color:var(--gray-500)">Helps Maharashtra improve government services</div></div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-size:13px;font-weight:500">Email notifications</div><div style="font-size:11px;color:var(--gray-500)">Application updates and alerts</div></div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-size:13px;font-weight:500">SMS notifications</div><div style="font-size:11px;color:var(--gray-500)">OTP and urgent alerts only</div></div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Active Sessions -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header">
+            <div class="card-title">Active Sessions</div>
+            <button class="btn btn-danger btn-sm" onclick="if(confirm('Terminate all other sessions?')) showToast('Other sessions terminated')">End others</button>
+          </div>
+          <div class="session-card">
+            <div class="session-icon">💻</div>
+            <div class="session-info">
+              <div class="session-device">Windows 11 · Chrome 128</div>
+              <div class="session-meta">Pune, Maharashtra · 192.168.1.x · Right now</div>
+            </div>
+            <span class="session-current">Current</span>
+          </div>
+          <div class="session-card">
+            <div class="session-icon">📱</div>
+            <div class="session-info">
+              <div class="session-device">Android 14 · SevaLink App</div>
+              <div class="session-meta">Pune, Maharashtra · 2 hours ago</div>
+            </div>
+            <button class="btn btn-danger btn-xs" onclick="showToast('Session terminated')">End</button>
+          </div>
+          <div class="session-card">
+            <div class="session-icon">💻</div>
+            <div class="session-info">
+              <div class="session-device">macOS · Safari 17</div>
+              <div class="session-meta">Mumbai, Maharashtra · 2 days ago</div>
+            </div>
+            <button class="btn btn-danger btn-xs" onclick="showToast('Session terminated')">End</button>
+          </div>
+        </div>
+
+        <!-- Security Activity Log -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Security Activity Log</div>
+          </div>
+          <div>
+            <div class="audit-row" style="background:var(--gray-50)">
+              <span style="color:var(--success)">✅</span>
+              <div style="flex:1"><div style="font-size:12px;font-weight:500">Login successful</div><div style="font-size:11px;color:var(--gray-500)">Pune · Chrome · Windows</div></div>
+              <span style="font-size:11px;color:var(--gray-400)">Today 9:12 AM</span>
+            </div>
+            <div class="audit-row">
+              <span style="color:var(--warning)">⚠️</span>
+              <div style="flex:1"><div style="font-size:12px;font-weight:500">OTP requested</div><div style="font-size:11px;color:var(--gray-500)">Profile update attempt</div></div>
+              <span style="font-size:11px;color:var(--gray-400)">Yesterday 4:30 PM</span>
+            </div>
+            <div class="audit-row">
+              <span style="color:var(--success)">✅</span>
+              <div style="flex:1"><div style="font-size:12px;font-weight:500">Consent granted</div><div style="font-size:11px;color:var(--gray-500)">Education Dept. — scholarship</div></div>
+              <span style="font-size:11px;color:var(--gray-400)">2 Sep 2026</span>
+            </div>
+            <div class="audit-row">
+              <span style="color:var(--success)">✅</span>
+              <div style="flex:1"><div style="font-size:12px;font-weight:500">Document uploaded</div><div style="font-size:11px;color:var(--gray-500)">Income certificate</div></div>
+              <span style="font-size:11px;color:var(--gray-400)">28 Aug 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ NOTIFICATIONS -->
+  <div class="page" id="page-notifications">
+    <div class="page-header">
+      <div class="page-title">Notification Center</div>
+      <div class="page-sub">3 unread notifications</div>
+      <div class="page-actions">
+        <button class="btn btn-outline btn-sm" onclick="showToast('All marked as read')">Mark all read</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this,'notif-all')">All <span class="nav-badge" style="position:static;background:var(--orange)">3</span></div>
+        <div class="tab" onclick="switchTab(this,'notif-app')">Applications</div>
+        <div class="tab" onclick="switchTab(this,'notif-sec')">Security</div>
+        <div class="tab" onclick="switchTab(this,'notif-doc')">Documents</div>
+        <div class="tab" onclick="switchTab(this,'notif-govt')">Government</div>
+      </div>
+
+      <div id="notif-all">
+        <div id="notifList"><!-- injected --></div>
+      </div>
+      <div id="notif-app" style="display:none"><div style="padding:20px;color:var(--gray-400);text-align:center">1 application notification</div></div>
+      <div id="notif-sec" style="display:none"><div style="padding:20px;color:var(--gray-400);text-align:center">1 security notification</div></div>
+      <div id="notif-doc" style="display:none"><div style="padding:20px;color:var(--gray-400);text-align:center">1 document notification</div></div>
+      <div id="notif-govt" style="display:none"><div style="padding:20px;color:var(--gray-400);text-align:center">Government announcements will appear here</div></div>
+    </div>
+  </div>
+
+  <!-- ================================================ GRIEVANCE -->
+  <div class="page" id="page-grievance">
+    <div class="page-header">
+      <div class="page-title">Grievance & Support</div>
+      <div class="page-sub">Submit and track grievances related to government services</div>
+    </div>
+
+    <div class="section-grid col-2">
+      <div>
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title" style="margin-bottom:14px">Submit New Grievance</div>
+          <div class="grievance-form">
+            <div class="form-group">
+              <label class="form-label">Grievance Category</label>
+              <select class="form-control">
+                <option>Select category</option>
+                <option>Application Processing Delay</option>
+                <option>Document Rejection</option>
+                <option>Benefit Not Received</option>
+                <option>Technical Issue</option>
+                <option>Officer Misconduct</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Department</label>
+              <select class="form-control">
+                <option>Select department</option>
+                <option>Agriculture Dept.</option>
+                <option>Education Dept.</option>
+                <option>Housing Dept.</option>
+                <option>Revenue Dept.</option>
+                <option>Social Justice Dept.</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Related Application ID (if any)</label>
+              <input class="form-control" placeholder="e.g. APP-2026-08-7842">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Priority</label>
+              <select class="form-control">
+                <option>Normal</option>
+                <option>Urgent</option>
+                <option>Emergency</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" rows="4" placeholder="Describe your grievance in detail. Include relevant dates, application IDs and previous communication."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Supporting Documents (optional)</label>
+              <input type="file" class="form-control" style="padding:6px">
+            </div>
+            <button class="btn btn-primary" onclick="showToast('Grievance GRV-2026-09-8841 submitted. You will receive SMS confirmation.')">Submit Grievance</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:14px">My Grievances</div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <div style="font-size:13px;font-weight:600">GRV-2026-07-3341</div>
+              <span class="badge badge-success">Resolved</span>
+            </div>
+            <div style="font-size:12px;color:var(--gray-600)">Application Processing Delay — Education Dept.</div>
+            <div style="font-size:11px;color:var(--gray-500);margin-top:4px">Submitted: 15 Jul 2026 · Resolved: 28 Jul 2026</div>
+            <div class="timeline" style="margin-top:12px">
+              <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-label" style="font-size:12px">Submitted</div></div>
+              <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-label" style="font-size:12px">Assigned to Officer</div></div>
+              <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-label" style="font-size:12px">Under Investigation</div></div>
+              <div class="timeline-item" style="margin-bottom:0"><div class="timeline-dot done"></div><div class="timeline-label" style="font-size:12px">Resolved ✓</div><div class="timeline-sub">Application was processed and approved</div></div>
+            </div>
+          </div>
+          <div style="text-align:center;padding:20px;color:var(--gray-400)">
+            <div style="font-size:12px">No other active grievances</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ API CONNECTORS -->
+  <div class="page" id="page-connectors">
+    <div class="page-header">
+      <div class="page-title">Government API Connector Center</div>
+      <div class="page-sub">Monitor and manage integrations with Maharashtra government systems</div>
+    </div>
+
+    <div class="alert alert-warning">⚠️ All connectors are operating in Sandbox/Mock mode. No real government API connections exist in this prototype. Data shown is simulated for demonstration.</div>
+
+    <div class="section-grid col-2" id="connectorGrid"><!-- injected --></div>
+
+    <div class="card" style="margin-top:20px">
+      <div class="card-header"><div class="card-title">API Health Monitor</div><span class="badge badge-success">All Systems Operational</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Connector</th><th>Endpoint</th><th>Status</th><th>Response Time</th><th>Uptime</th><th>Last Check</th></tr></thead>
+        <tbody>
+          <tr><td><strong>MahaDBT</strong></td><td>/api/v2/beneficiary</td><td><span class="badge badge-success">✓ Healthy</span></td><td>142ms</td><td>99.7%</td><td>Just now</td></tr>
+          <tr><td><strong>Aaple Sarkar</strong></td><td>/api/certificate/status</td><td><span class="badge badge-success">✓ Healthy</span></td><td>89ms</td><td>99.9%</td><td>Just now</td></tr>
+          <tr><td><strong>Revenue Registry</strong></td><td>/api/land/records</td><td><span class="badge badge-warning">⚠ Degraded</span></td><td>1,240ms</td><td>97.2%</td><td>2 min ago</td></tr>
+          <tr><td><strong>Education Registry</strong></td><td>/api/marksheet/verify</td><td><span class="badge badge-success">✓ Healthy</span></td><td>220ms</td><td>99.1%</td><td>Just now</td></tr>
+          <tr><td><strong>DigiLocker</strong></td><td>/api/document/fetch</td><td><span class="badge badge-success">✓ Healthy</span></td><td>310ms</td><td>99.5%</td><td>Just now</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ================================================ AUDIT LOG -->
+  <div class="page" id="page-audit">
+    <div class="page-header">
+      <div class="page-title">Audit Log</div>
+      <div class="page-sub">Complete record of all system and user actions</div>
+    </div>
+
+    <div class="filter-row">
+      <select class="form-control" style="width:auto;font-size:12px">
+        <option>All Actions</option>
+        <option>Login</option>
+        <option>Document</option>
+        <option>Application</option>
+        <option>Consent</option>
+        <option>Security</option>
+      </select>
+      <select class="form-control" style="width:auto;font-size:12px">
+        <option>All Risk Levels</option>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+      <select class="form-control" style="width:auto;font-size:12px">
+        <option>All Departments</option>
+        <option>Agriculture</option>
+        <option>Education</option>
+        <option>Revenue</option>
+      </select>
+      <div class="search-bar" style="flex:1">
+        <span class="search-icon">🔍</span>
+        <input class="form-control" placeholder="Search logs..." style="padding-left:36px">
+      </div>
+      <button class="btn btn-outline btn-sm">📥 Export</button>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Timestamp</th><th>User</th><th>Action</th><th>Department</th><th>Device/IP</th><th>Result</th><th>Risk</th></tr></thead>
+        <tbody id="auditTable"><!-- injected --></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ================================================ ADMIN DASHBOARD -->
+  <div class="page" id="page-admin-dashboard">
+    <div class="page-header">
+      <div class="page-title">Admin Dashboard</div>
+      <div class="page-sub">SevaLink Maharashtra — System Overview · Sandbox Environment</div>
+    </div>
+
+    <div class="stat-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+      <div class="stat-card"><div class="stat-icon green">👥</div><div><div class="stat-label">Active Citizens</div><div class="stat-value">1,24,892</div><div class="stat-change up">↑ 2.3% today</div></div></div>
+      <div class="stat-card"><div class="stat-icon navy">📋</div><div><div class="stat-label">Applications Today</div><div class="stat-value">3,847</div><div class="stat-change up">↑ 12% vs yesterday</div></div></div>
+      <div class="stat-card"><div class="stat-icon orange">⚡</div><div><div class="stat-label">API Requests/hr</div><div class="stat-value">48,291</div><div class="stat-change">Normal load</div></div></div>
+      <div class="stat-card"><div class="stat-icon red">🚨</div><div><div class="stat-label">Security Alerts</div><div class="stat-value">2</div><div class="stat-change down">Medium priority</div></div></div>
+      <div class="stat-card"><div class="stat-icon blue">🖥️</div><div><div class="stat-label">System Uptime</div><div class="stat-value">99.97%</div><div class="stat-change up">30-day average</div></div></div>
+      <div class="stat-card"><div class="stat-icon green">✅</div><div><div class="stat-label">Connectors Online</div><div class="stat-value">4 / 5</div><div class="stat-change down">Revenue degraded</div></div></div>
+    </div>
+
+    <div class="section-grid col-2">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Application Volume (This Week)</div></div>
+        <div class="mini-chart">
+          <div class="mini-bar" style="height:35%"></div>
+          <div class="mini-bar" style="height:55%"></div>
+          <div class="mini-bar" style="height:48%"></div>
+          <div class="mini-bar" style="height:70%"></div>
+          <div class="mini-bar" style="height:62%"></div>
+          <div class="mini-bar" style="height:80%"></div>
+          <div class="mini-bar orange" style="height:90%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--gray-400)">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Today</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Department Performance</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Department</th><th>Pending</th><th>SLA Met</th><th>Avg Days</th></tr></thead>
+          <tbody>
+            <tr><td>Agriculture</td><td>842</td><td><span class="badge badge-success">94%</span></td><td>4.2</td></tr>
+            <tr><td>Education</td><td>1,240</td><td><span class="badge badge-success">89%</span></td><td>6.1</td></tr>
+            <tr><td>Housing</td><td>3,102</td><td><span class="badge badge-warning">71%</span></td><td>18.4</td></tr>
+            <tr><td>Revenue</td><td>524</td><td><span class="badge badge-success">96%</span></td><td>3.8</td></tr>
+            <tr><td>Social Welfare</td><td>2,811</td><td><span class="badge badge-danger">63%</span></td><td>22.1</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="section-grid col-3" style="margin-top:20px">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:12px">Data Quality Score</div>
+        <div style="text-align:center;padding:10px">
+          <div style="font-size:42px;font-weight:700;color:var(--navy)">87<span style="font-size:20px">%</span></div>
+          <div style="font-size:12px;color:var(--gray-500);margin-top:4px">Above target (80%)</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill green" style="width:87%"></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:12px">Connector Health</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+          <div style="display:flex;justify-content:space-between"><span>MahaDBT</span><span class="badge badge-success">✓ OK</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Aaple Sarkar</span><span class="badge badge-success">✓ OK</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Revenue Registry</span><span class="badge badge-warning">⚠ Slow</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Education Registry</span><span class="badge badge-success">✓ OK</span></div>
+          <div style="display:flex;justify-content:space-between"><span>DigiLocker</span><span class="badge badge-success">✓ OK</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:12px">Security Alerts</div>
+        <div style="border-left:3px solid var(--warning);padding:8px 10px;background:var(--warning-bg);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:8px">
+          <div style="font-size:12px;font-weight:600;color:var(--warning)">Multiple failed logins</div>
+          <div style="font-size:11px;color:var(--gray-600)">3 accounts · Pune district · Investigating</div>
+        </div>
+        <div style="border-left:3px solid var(--info);padding:8px 10px;background:var(--info-bg);border-radius:0 var(--radius) var(--radius) 0">
+          <div style="font-size:12px;font-weight:600;color:var(--info)">Unusual API access pattern</div>
+          <div style="font-size:11px;color:var(--gray-600)">Revenue connector · Auto-monitored</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ OFFICER DASHBOARD -->
+  <div class="page" id="page-officer-dashboard">
+    <div class="page-header">
+      <div class="page-title">Officer Dashboard</div>
+      <div class="page-sub">Application queue — Agriculture Department · Officer: Suresh Mane</div>
+    </div>
+
+    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="stat-card"><div class="stat-icon orange">📋</div><div><div class="stat-label">In Queue</div><div class="stat-value">47</div></div></div>
+      <div class="stat-card"><div class="stat-icon red">🔴</div><div><div class="stat-label">High Priority</div><div class="stat-value">8</div></div></div>
+      <div class="stat-card"><div class="stat-icon green">✅</div><div><div class="stat-label">Approved Today</div><div class="stat-value">12</div></div></div>
+      <div class="stat-card"><div class="stat-icon navy">⏱</div><div><div class="stat-label">SLA Compliance</div><div class="stat-value">91%</div></div></div>
+    </div>
+
+    <div class="section-grid col-2">
+      <div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Application Queue</div><div class="filter-row" style="margin:0"><select class="form-control" style="width:auto;font-size:11px"><option>All Priority</option><option>High</option><option>Normal</option></select></div></div>
+
+          <div class="queue-item" onclick="navigate('officer-review')">
+            <div class="queue-priority high"></div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:600">APP-2026-09-0192</div>
+              <div style="font-size:12px;color:var(--gray-600)">Kamini Raut — PM Kisan Yojana</div>
+              <div class="sla-bar"><div class="sla-seg done"></div><div class="sla-seg done"></div><div class="sla-seg done"></div><div class="sla-seg over"></div><div class="sla-seg over"></div></div>
+              <div style="font-size:10px;color:var(--danger)">SLA Overdue by 2 days</div>
+            </div>
+            <span class="badge badge-danger">Urgent</span>
+          </div>
+
+          <div class="queue-item" onclick="navigate('officer-review')">
+            <div class="queue-priority high"></div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:600">APP-2026-08-7842</div>
+              <div style="font-size:12px;color:var(--gray-600)">Rahul Patil — Swayam Siddha Scheme</div>
+              <div class="sla-bar"><div class="sla-seg done"></div><div class="sla-seg done"></div><div class="sla-seg warn"></div><div class="sla-seg"></div><div class="sla-seg"></div></div>
+              <div style="font-size:10px;color:var(--warning)">SLA: 2 days remaining</div>
+            </div>
+            <span class="badge badge-warning">Review</span>
+          </div>
+
+          <div class="queue-item">
+            <div class="queue-priority medium"></div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:600">APP-2026-08-6641</div>
+              <div style="font-size:12px;color:var(--gray-600)">Suresh Kumar — Crop Insurance</div>
+              <div class="sla-bar"><div class="sla-seg done"></div><div class="sla-seg"></div><div class="sla-seg"></div><div class="sla-seg"></div><div class="sla-seg"></div></div>
+              <div style="font-size:10px;color:var(--gray-500)">SLA: 4 days remaining</div>
+            </div>
+            <span class="badge badge-info">Doc Review</span>
+          </div>
+
+          <div class="queue-item">
+            <div class="queue-priority low"></div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:600">APP-2026-08-5980</div>
+              <div style="font-size:12px;color:var(--gray-600)">Priya Desai — Shetkari Yojana</div>
+              <div class="sla-bar"><div class="sla-seg done"></div><div class="sla-seg done"></div><div class="sla-seg done"></div><div class="sla-seg"></div><div class="sla-seg"></div></div>
+              <div style="font-size:10px;color:var(--gray-500)">SLA: 7 days remaining</div>
+            </div>
+            <span class="badge badge-gray">Pending</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:16px" id="officer-review-card">
+          <div class="card-header">
+            <div><div class="card-title">APP-2026-08-7842 — Review</div><div class="card-sub">Swayam Siddha Scheme · Rahul Ashok Patil</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;font-size:12px">
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Submitted</span><strong>22 Aug 2026</strong></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Applicant</span><strong>Rahul Ashok Patil</strong></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">District</span><strong>Pune</strong></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Land Area</span><strong>2.5 acres</strong></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:var(--gray-600)">Annual Income</span><strong>₹1,20,000</strong></div>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Documents Submitted</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--gray-50);border-radius:var(--radius)">
+              <span style="font-size:12px">📄 7/12 Land Record</span>
+              <span class="badge badge-success">Verified ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--gray-50);border-radius:var(--radius)">
+              <span style="font-size:12px">📄 Income Certificate</span>
+              <span class="badge badge-success">Verified ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--gray-50);border-radius:var(--radius)">
+              <span style="font-size:12px">📄 Aadhaar Card</span>
+              <span class="badge badge-success">Verified ✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--warning-bg);border-radius:var(--radius)">
+              <span style="font-size:12px">📄 Bank Passbook</span>
+              <span class="badge badge-warning">Pending</span>
+            </div>
+          </div>
+          <textarea class="form-control" rows="2" placeholder="Officer remarks..." style="margin-bottom:10px"></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-success" style="flex:1" onclick="showToast('Application APP-2026-08-7842 Approved. Citizen will be notified.')">✓ Approve</button>
+            <button class="btn btn-danger" style="flex:1" onclick="showToast('Application returned. Reason sent to citizen via SMS.')">✗ Return</button>
+            <button class="btn btn-outline btn-sm">Request Docs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main-content -->
+</div><!-- end app -->
+
+<!-- OTP MODAL -->
+<div class="modal-overlay" id="otpModal">
+  <div class="modal">
+    <div class="modal-title" id="otpTitle">Verify Identity</div>
+    <div class="modal-sub" id="otpSub">Enter the 6-digit OTP sent to +91 98765 43210</div>
+    <div class="otp-inputs">
+      <input class="otp-box" maxlength="1" oninput="otpNext(this)" id="otp1">
+      <input class="otp-box" maxlength="1" oninput="otpNext(this)" id="otp2">
+      <input class="otp-box" maxlength="1" oninput="otpNext(this)" id="otp3">
+      <input class="otp-box" maxlength="1" oninput="otpNext(this)" id="otp4">
+      <input class="otp-box" maxlength="1" oninput="otpNext(this)" id="otp5">
+      <input class="otp-box" maxlength="1" oninput="otpNext(this)" id="otp6">
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-primary" style="flex:1" onclick="verifyOTP()">Verify OTP</button>
+      <button class="btn btn-outline" onclick="closeOTP()">Cancel</button>
+    </div>
+    <div style="text-align:center;margin-top:12px;font-size:12px;color:var(--gray-500)">Resend OTP in <span id="otpTimer">30s</span> · Demo: any 6 digits</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" style="position:fixed;bottom:24px;right:24px;background:var(--navy);color:white;padding:12px 18px;border-radius:var(--radius);font-size:13px;box-shadow:var(--shadow-lg);display:none;z-index:500;max-width:340px;border-left:4px solid var(--orange)"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
